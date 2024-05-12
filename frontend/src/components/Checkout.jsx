@@ -6,6 +6,7 @@ import { placeOrder } from '../actions/orderAction';
 import Loader from './Loader';
 import Success from './Success';
 import Error from './Error';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Checkout = ({subTotal}) => {
@@ -16,6 +17,15 @@ const Checkout = ({subTotal}) => {
         dispatch(placeOrder(token, subTotal))
         console.log(token);
     }
+    const history=useHistory();
+    if(loading===false&&success===true){
+      localStorage.removeItem("cartItems")
+      setTimeout(()=>{
+        history.push("/orders")
+      },5000);
+    }
+    const cartItems=JSON.parse(localStorage.getItem("cartItems"))
+    console.log(cartItems)
   return (
    <>
     {loading && (<Loader/>)}
@@ -24,6 +34,7 @@ const Checkout = ({subTotal}) => {
     {success && (<Success success='Order placed successfully😁'/>)}
 
     
+    {cartItems&&cartItems.length>0&&
     <StripeCheckout
     amount={subTotal * 100}
     shippingAddress 
@@ -32,7 +43,8 @@ const Checkout = ({subTotal}) => {
     currency='INR'
     >
     <Button>Pay Now</Button>
-    </StripeCheckout></>
+    </StripeCheckout>}
+    </>
   )
 }
 

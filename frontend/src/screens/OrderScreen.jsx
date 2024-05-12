@@ -14,7 +14,7 @@ const OrderScreen = () => {
   },[dispatch]);
   return (
     <>
-      <h1>Your Orders</h1>
+      <h1 style={{marginLeft:"40px"}}>Your Orders</h1>
       {loading && (<Loader/>)}
       {error && (<Error error='something went wrong'/>)}
       {
