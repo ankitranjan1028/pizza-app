@@ -13,7 +13,6 @@ const HomeScreen = () => {
   const pizzastate = useSelector((state)=>state.getAllPizzaReducer);
   //console.log(pizzastate);
   const {loading, pizzas, error} = pizzastate;
-
   useEffect(()=>{
     dispatch(getAllPizzas());
   },[dispatch]);
