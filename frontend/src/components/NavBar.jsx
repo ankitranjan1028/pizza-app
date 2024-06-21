@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <div className='is-sticky'>
-      <Navbar collapseOnSelect expand="lg" bg="dark"  variant="dark" style={{ padding: '1rem 0',background: 'linear-gradient(to right, #2b5876, #4e4376)' }}>
+      <Navbar collapseOnSelect expand="lg" bg="dark"  variant="dark" style={{ padding: '1rem 0',background: 'linear-gradient(to right, #2b5876, #4e4376)'}}>
         <Container>
           <Navbar.Brand>
             <Image src="images/logo.png" style={{ height: '50px' }} />
